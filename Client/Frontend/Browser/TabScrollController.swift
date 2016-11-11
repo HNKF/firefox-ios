@@ -131,6 +131,15 @@ class TabScrollingController: NSObject {
         self.lastZoomedScale = self.isZoomedOut ? 0 : scrollView.zoomScale
     }
 
+    func setMinimumZoom() {
+        guard let scrollView = scrollView else {
+            return
+        }
+        if self.isZoomedOut && roundNum(scrollView.zoomScale) != roundNum(scrollView.minimumZoomScale) {
+            scrollView.zoomScale = scrollView.minimumZoomScale
+        }
+    }
+
     func resetZoomState() {
         self.isZoomedOut = false
         self.lastZoomedScale = 0

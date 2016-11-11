@@ -272,7 +272,9 @@ class BrowserViewController: UIViewController {
         coordinator.animateAlongsideTransition({ context in
             self.scrollController.showToolbars(animated: false)
             self.scrollController.updateMinimumZoom()
-        }, completion:nil)
+            }, completion: { _ in
+                self.scrollController.setMinimumZoom()
+        })
     }
 
     func SELappDidEnterBackgroundNotification() {
